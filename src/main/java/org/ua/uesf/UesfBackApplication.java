@@ -1,4 +1,4 @@
-package org.ua.uesf.uesfback;
+package org.ua.uesf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
