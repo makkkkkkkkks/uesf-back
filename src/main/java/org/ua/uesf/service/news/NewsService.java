@@ -1,4 +1,4 @@
-package org.ua.uesf.service;
+package org.ua.uesf.service.news;
 
 import org.ua.uesf.model.News;
 import org.ua.uesf.model.dto.GeneralNewsDTO;

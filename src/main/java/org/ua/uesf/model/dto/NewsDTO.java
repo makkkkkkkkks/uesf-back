@@ -1,11 +1,12 @@
 package org.ua.uesf.model.dto;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Value;
 
 import java.time.Instant;
 
-@Value
+@Data
 @Builder(setterPrefix = "with")
 public class NewsDTO {
 
@@ -18,6 +19,8 @@ public class NewsDTO {
     String shortDescriptionUA;
     String shortDescriptionEN;
     String newsStatus;
+    String imgUA;
+    String imgEN;
     Instant creationDate;
     Instant updateDate;
 

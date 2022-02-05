@@ -8,7 +8,7 @@ import org.ua.uesf.exception.NotFoundException;
 import org.ua.uesf.model.News;
 import org.ua.uesf.model.dto.GeneralNewsDTO;
 import org.ua.uesf.model.dto.NewsDTO;
-import org.ua.uesf.service.NewsService;
+import org.ua.uesf.service.news.NewsService;
 
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +47,9 @@ public class NewsController {
     @PutMapping("/news/{id}")
     public News updateNews(@RequestBody News news,
                            @PathVariable("id") Long id) {
-        if (!Objects.equals(news.getId(), id)) throw new NotFoundException();
+        if (!Objects.equals(news.getId(), id))
+            throw new NotFoundException("The id's do not match " + news.getId() + " " + id);
+
         return newsService.update(id, news);
     }
 

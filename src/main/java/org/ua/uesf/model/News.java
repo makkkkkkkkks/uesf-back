@@ -20,7 +20,6 @@ public class News {
     String contentEN;
     String shortDescriptionUA;
     String shortDescriptionEN;
-
     String imgUA;
     String imgEN;
 

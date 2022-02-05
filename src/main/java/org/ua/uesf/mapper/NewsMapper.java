@@ -20,14 +20,9 @@ public interface NewsMapper {
     @Mapping(target = "shortDescriptionUA", source = "newsDTO.shortDescriptionUA")
     @Mapping(target = "shortDescriptionEN", source = "newsDTO.shortDescriptionEN")
     @Mapping(target = "newsStatus", expression = "java(mapToStatus(newsDTO))")
-  /*  @Mapping(target = "newsStatus", expression = "java(mapToStatus(newsDTO))")
-    @Mapping(target = "newsStatus", expression = "java(mapToStatus(newsDTO))")*/
-
-
-    @Mapping(target = "creationDate", source = "newsDTO.creationDate")
-    @Mapping(target = "updateDate", source = "newsDTO.updateDate")
+    @Mapping(target = "imgUA", source = "newsDTO.imgUA")
+    @Mapping(target = "imgEN", source = "newsDTO.imgEN")
     News dtoToNews(NewsDTO newsDTO);
-
 
     @Mapping(target = "id", source = "news.id")
     @Mapping(target = "title", source = "news.titleUA")
@@ -35,6 +30,7 @@ public interface NewsMapper {
     @Mapping(target = "content", source = "news.contentUA")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionUA")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
+    @Mapping(target = "img", source = "news.imgUA")
     @Mapping(target = "creationDate", source = "news.creationDate")
     @Mapping(target = "updateDate", source = "news.updateDate")
     GeneralNewsDTO dtoUA(News news);
@@ -45,6 +41,7 @@ public interface NewsMapper {
     @Mapping(target = "content", source = "news.contentEN")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionEN")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
+    @Mapping(target = "img", source = "news.imgEN")
     @Mapping(target = "creationDate", source = "news.creationDate")
     @Mapping(target = "updateDate", source = "news.updateDate")
     GeneralNewsDTO dtoEN(News news);
