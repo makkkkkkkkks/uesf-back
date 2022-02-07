@@ -19,29 +19,29 @@ import java.util.Objects;
 public class PartnerController {
     private final PartnerService partnerService;
 
-    @GetMapping("/partner")
+    @GetMapping("/partners")
     public ResponseEntity<List<Partner>> getPartner() {
         List<Partner> partners = partnerService.findAll();
         return new ResponseEntity<>(partners, HttpStatus.OK);
     }
 
-    @GetMapping("/partner/{id}")
+    @GetMapping("/partners/{id}")
     public Partner getPartnerById(@PathVariable("id") long id) {
         return partnerService.findById(id);
     }
 
-    @PostMapping("/partner")
-    public ResponseEntity<Void> saveNews(@RequestBody Partner partner) {
+    @PostMapping("/partners")
+    public ResponseEntity<Void> savePartner(@RequestBody Partner partner) {
         partnerService.savePartner(partner);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @DeleteMapping("/partner/{id}")
+    @DeleteMapping("/partners/{id}")
     public void deletePartnerById(@PathVariable String id) {
         partnerService.deletePartnerById(Long.parseLong(id));
     }
 
-    @PutMapping("/partner/{id}")
+    @PutMapping("/partners/{id}")
     public Partner updatePartner(@RequestBody Partner partner,
                                  @PathVariable("id") Long id) {
         if (!Objects.equals(partner.getId(), id))

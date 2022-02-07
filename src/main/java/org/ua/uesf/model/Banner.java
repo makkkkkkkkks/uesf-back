@@ -19,11 +19,9 @@ public class Banner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    String imageUA;
-    String imageEN;
+    String image;
     String link;
     String orderNumber;
-    String titleUA;
-    String titleEN;
+    String title;
 
 }
