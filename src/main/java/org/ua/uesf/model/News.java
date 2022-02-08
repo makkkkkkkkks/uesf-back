@@ -5,27 +5,29 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Entity
 @Data
+@Entity
 public class News {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
-    String titleUA;
-    String titleEN;
-    String game;
-    String contentUA;
-    String contentEN;
-    String shortDescriptionUA;
-    String shortDescriptionEN;
-    String imgUA;
-    String imgEN;
+    private   String titleUA;
+    private  String titleEN;
+    private  String game;
+    private  String contentUA;
+    private String contentEN;
+    private String shortDescriptionUA;
+    private  String shortDescriptionEN;
+    private  String imgUA;
+    private  String imgEN;
 
     @Enumerated(EnumType.STRING)
-    NewsStatus newsStatus;
-    Instant creationDate;
-    Instant updateDate;
+    private  NewsStatus newsStatus;
+    private  Instant creationDate;
+    private  Instant updateDate;
 
 }
+
+

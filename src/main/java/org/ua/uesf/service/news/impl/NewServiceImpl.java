@@ -97,6 +97,11 @@ public class NewServiceImpl implements NewsService {
         if (Objects.nonNull(news.getImgUA()) && !"".equalsIgnoreCase(news.getImgUA())) {
             newsFromDb.setContentEN(news.getImgUA());
         }
+        if(!Objects.nonNull(newsFromDb.getCreationDate())){
+            newsFromDb.setCreationDate(Instant.now());
+        }
+        newsFromDb.setUpdateDate(Instant.now());
+
         return newsRepository.save(news);
     }
 

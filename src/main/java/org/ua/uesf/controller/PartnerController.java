@@ -25,7 +25,7 @@ public class PartnerController {
         return new ResponseEntity<>(partners, HttpStatus.OK);
     }
 
-    @GetMapping("/partners/{id}")
+    @GetMapping("/partner/{id}")
     public Partner getPartnerById(@PathVariable("id") long id) {
         return partnerService.findById(id);
     }
@@ -36,12 +36,12 @@ public class PartnerController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @DeleteMapping("/partners/{id}")
+    @DeleteMapping("/partner/{id}")
     public void deletePartnerById(@PathVariable String id) {
         partnerService.deletePartnerById(Long.parseLong(id));
     }
 
-    @PutMapping("/partners/{id}")
+    @PutMapping("/partner/{id}")
     public Partner updatePartner(@RequestBody Partner partner,
                                  @PathVariable("id") Long id) {
         if (!Objects.equals(partner.getId(), id))

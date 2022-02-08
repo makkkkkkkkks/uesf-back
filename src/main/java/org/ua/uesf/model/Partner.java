@@ -15,12 +15,12 @@ public class Partner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String imageUA;
-    String imageEN;
-    String link;
-    String orderNumber;
-    String titleUA;
-    String titleEN;
+    private Long id;
+    private  String imageUA;
+    private  String imageEN;
+    private String link;
+    private String orderNumber;
+    private String titleUA;
+    private String titleEN;
 
 }
