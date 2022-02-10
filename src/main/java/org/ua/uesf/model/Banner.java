@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -22,7 +19,8 @@ public class Banner {
     private String image;
     private String link;
     private String orderNumber;
+
+    @Enumerated(EnumType.STRING)
     private BannerPosition bannerPosition;
-    private String title;
 
 }

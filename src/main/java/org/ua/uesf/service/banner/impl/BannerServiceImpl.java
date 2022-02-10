@@ -64,9 +64,10 @@ public class BannerServiceImpl implements BannerService {
         if (Objects.nonNull(banner.getOrderNumber()) && !"".equalsIgnoreCase(banner.getOrderNumber())) {
             bannerFromDB.setLink(banner.getOrderNumber());
         }
-        if (Objects.nonNull(banner.getTitle()) && !"".equalsIgnoreCase(banner.getTitle())) {
-            bannerFromDB.setLink(banner.getTitle());
+        if (Objects.nonNull(banner.getBannerPosition()) && !"".equalsIgnoreCase(String.valueOf(banner.getBannerPosition()))) {
+            bannerFromDB.setBannerPosition(banner.getBannerPosition());
         }
+
         bannerRepository.save(banner);
     }
 }
