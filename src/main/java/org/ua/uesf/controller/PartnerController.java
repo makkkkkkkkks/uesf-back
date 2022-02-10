@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.ua.uesf.exception.NotFoundException;
-import org.ua.uesf.model.News;
+import org.ua.uesf.exception.messages.messages.NotFoundException;
 import org.ua.uesf.model.Partner;
-import org.ua.uesf.model.dto.GeneralNewsDTO;
-import org.ua.uesf.model.dto.NewsDTO;
 import org.ua.uesf.service.parthner.PartnerService;
 
 import java.util.List;

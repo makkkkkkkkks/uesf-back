@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.ua.uesf.exception.NotFoundException;
+import org.ua.uesf.exception.messages.messages.NotFoundException;
 import org.ua.uesf.model.News;
 import org.ua.uesf.model.dto.GeneralNewsDTO;
 import org.ua.uesf.model.dto.NewsDTO;
@@ -22,8 +22,13 @@ public class NewsController {
     @GetMapping("/news")
     public ResponseEntity<List<GeneralNewsDTO>> getNews(@RequestHeader(value = "locale", defaultValue = "UA") String locale,
                                                         @RequestParam(defaultValue = "0") int page,
-                                                        @RequestParam(defaultValue = "10") int size) {
-        List<GeneralNewsDTO> newsPage = newsService.findNews(locale, page, size);
+                                                        @RequestParam(defaultValue = "10") int size,
+                                                        @RequestParam(required = false) Long gameId) {
+        List<GeneralNewsDTO> newsPage;
+        if (gameId != null) {
+            newsService.findNewsByGameId(locale, page, size, gameId);
+        }
+        newsPage = newsService.findNews(locale, page, size);
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }
 
