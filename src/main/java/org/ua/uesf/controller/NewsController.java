@@ -27,6 +27,15 @@ public class NewsController {
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }
 
+    @GetMapping("/newsByGameId")
+    public ResponseEntity<List<GeneralNewsDTO>> getNewsByGameId(@RequestParam(defaultValue = "0") int page,
+                                                                @RequestParam(defaultValue = "10") int size,
+                                                                @RequestParam(defaultValue = "0") Long id,
+                                                                @RequestHeader(value = "locale", defaultValue = "UA") String locale) {
+        List<GeneralNewsDTO> newsPage = newsService.findNewsByGameId(locale, page, size, id);
+        return new ResponseEntity<>(newsPage, HttpStatus.OK);
+    }
+
     @GetMapping("/news/{id}")
     public News getById(@PathVariable("id") long id) {
         return newsService.findById(id);

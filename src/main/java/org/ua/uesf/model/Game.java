@@ -20,7 +20,7 @@ public class Game {
     private String img;
     private String title;
 
-    @ManyToMany(mappedBy = "game")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "game")
     @JsonManagedReference
     private Set<News> news = new HashSet<>();
 

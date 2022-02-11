@@ -3,10 +3,14 @@ package org.ua.uesf.mapper;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.ua.uesf.model.Game;
 import org.ua.uesf.model.News;
 import org.ua.uesf.model.NewsStatus;
 import org.ua.uesf.model.dto.GeneralNewsDTO;
 import org.ua.uesf.model.dto.NewsDTO;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Mapper(builder = @Builder(disableBuilder = true))
@@ -27,7 +31,7 @@ public interface NewsMapper {
 
     @Mapping(target = "id", source = "news.id")
     @Mapping(target = "title", source = "news.titleUA")
-    @Mapping(target = "game", ignore = true)
+    @Mapping(target = "game", expression = "java(mapGame(news))")
     @Mapping(target = "content", source = "news.contentUA")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionUA")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
@@ -38,7 +42,7 @@ public interface NewsMapper {
 
     @Mapping(target = "id", source = "news.id")
     @Mapping(target = "title", source = "news.titleEN")
-    @Mapping(target = "game", ignore = true)
+    @Mapping(target = "game", expression = "java(mapGame(news))")
     @Mapping(target = "content", source = "news.contentEN")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionEN")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
@@ -56,5 +60,13 @@ public interface NewsMapper {
     default String statusToString(News news) {
         if (news.getNewsStatus().toString().equals("PUBLISHED")) return "PUBLISHED";
         return "NOT_PUBLISHED";
+    }
+
+    default Set<String> mapGame(News news) {
+        return news.getGame().stream()
+                .map(Game::getId)
+                .map(String::valueOf)
+                .collect(Collectors.toSet());
+
     }
 }

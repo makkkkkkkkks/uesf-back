@@ -3,6 +3,7 @@ package org.ua.uesf.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@ToString
 public class News {
 
     @Id
@@ -30,7 +32,7 @@ public class News {
     private Instant creationDate;
     private Instant updateDate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "news_game", joinColumns = @JoinColumn(name = "news_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
 
     @JsonBackReference
