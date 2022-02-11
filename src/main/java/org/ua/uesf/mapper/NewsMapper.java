@@ -8,13 +8,14 @@ import org.ua.uesf.model.NewsStatus;
 import org.ua.uesf.model.dto.GeneralNewsDTO;
 import org.ua.uesf.model.dto.NewsDTO;
 
+
 @Mapper(builder = @Builder(disableBuilder = true))
 public interface NewsMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "titleUA", source = "newsDTO.titleUA")
     @Mapping(target = "titleEN", source = "newsDTO.titleEN")
-    @Mapping(target = "game", source = "newsDTO.game")
+    @Mapping(target = "game", ignore = true)
     @Mapping(target = "contentUA", source = "newsDTO.contentUA")
     @Mapping(target = "contentEN", source = "newsDTO.contentEN")
     @Mapping(target = "shortDescriptionUA", source = "newsDTO.shortDescriptionUA")
@@ -26,7 +27,7 @@ public interface NewsMapper {
 
     @Mapping(target = "id", source = "news.id")
     @Mapping(target = "title", source = "news.titleUA")
-    @Mapping(target = "game", source = "news.game")
+    @Mapping(target = "game", ignore = true)
     @Mapping(target = "content", source = "news.contentUA")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionUA")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
@@ -37,7 +38,7 @@ public interface NewsMapper {
 
     @Mapping(target = "id", source = "news.id")
     @Mapping(target = "title", source = "news.titleEN")
-    @Mapping(target = "game", source = "news.game")
+    @Mapping(target = "game", ignore = true)
     @Mapping(target = "content", source = "news.contentEN")
     @Mapping(target = "shortDescription", source = "news.shortDescriptionEN")
     @Mapping(target = "newsStatus", expression = "java(statusToString(news))")
@@ -49,13 +50,11 @@ public interface NewsMapper {
 
     default NewsStatus mapToStatus(NewsDTO newsDTO) {
         if ("PUBLISHED".equals(newsDTO.getNewsStatus())) return NewsStatus.PUBLISHED;
-        if ("NOW_PUBLISHED".equals(newsDTO.getNewsStatus())) return NewsStatus.NOW_PUBLISHED;
-        return NewsStatus.EDIT;
+        return NewsStatus.NOT_PUBLISHED;
     }
 
     default String statusToString(News news) {
-        if (news.getNewsStatus().equals("PUBLISHED")) return "PUBLISHED";
-        if (news.getNewsStatus().equals("NOW_PUBLISHED")) return "NOW_PUBLISHED";
-        return "EDIT";
+        if (news.getNewsStatus().toString().equals("PUBLISHED")) return "PUBLISHED";
+        return "NOT_PUBLISHED";
     }
 }
