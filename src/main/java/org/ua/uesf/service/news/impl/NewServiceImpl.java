@@ -30,26 +30,25 @@ public class NewServiceImpl implements NewsService {
     private final GameRepository gameRepository;
     private final NewsMapper newsMapper = Mappers.getMapper(NewsMapper.class);
 
+
     @Override
     public List<GeneralNewsDTO> findNews(String locale, Integer page, Integer size) {
 
         Pageable paging = PageRequest.of(page, size);
 
         Page<News> news = newsRepository.findAll(NewsStatus.PUBLISHED.toString(), paging);
-        List<GeneralNewsDTO> generalNewsDTOS = null;
-        if ("UA".equals(locale)) {
-            generalNewsDTOS = news.getContent().stream().map(newsMapper::dtoUA).collect(Collectors.toList());
-        }
-        if ("EN".equals(locale)) {
-            generalNewsDTOS = news.getContent().stream().map(newsMapper::dtoEN).collect(Collectors.toList());
-        }
-        return generalNewsDTOS;
+        return getGeneralNewsDTOs(locale, news);
     }
 
     @Override
     public List<GeneralNewsDTO> findNewsByGameId(String locale, Integer page, Integer size, Long id) {
         Pageable paging = PageRequest.of(page, size);
         Page<News> news = newsRepository.findAllByGame(1L, NewsStatus.PUBLISHED, paging);
+        return getGeneralNewsDTOs(locale, news);
+    }
+
+
+    private List<GeneralNewsDTO> getGeneralNewsDTOs(String locale, Page<News> news) {
         List<GeneralNewsDTO> generalNewsDTOS = null;
         if ("UA".equals(locale)) {
             generalNewsDTOS = news.getContent().stream().map(newsMapper::dtoUA).collect(Collectors.toList());

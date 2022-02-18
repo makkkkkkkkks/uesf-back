@@ -22,17 +22,14 @@ public class NewsController {
     @GetMapping("/news")
     public ResponseEntity<List<GeneralNewsDTO>> getNews(@RequestHeader(value = "locale", defaultValue = "UA") String locale,
                                                         @RequestParam(defaultValue = "0") int page,
-                                                        @RequestParam(defaultValue = "10") int size) {
-        List<GeneralNewsDTO> newsPage = newsService.findNews(locale, page, size);
-        return new ResponseEntity<>(newsPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/newsByGameId")
-    public ResponseEntity<List<GeneralNewsDTO>> getNewsByGameId(@RequestParam(defaultValue = "0") int page,
-                                                                @RequestParam(defaultValue = "10") int size,
-                                                                @RequestParam(defaultValue = "0") Long id,
-                                                                @RequestHeader(value = "locale", defaultValue = "UA") String locale) {
-        List<GeneralNewsDTO> newsPage = newsService.findNewsByGameId(locale, page, size, id);
+                                                        @RequestParam(defaultValue = "10") int size,
+                                                        @RequestParam(required = false) Long gameId) {
+        List<GeneralNewsDTO> newsPage = null;
+        if (gameId != null) {
+            newsPage = newsService.findNewsByGameId(locale, page, size, gameId);
+        } else if (gameId == null) {
+            newsPage = newsService.findNews(locale, page, size);
+        }
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }
 

@@ -77,6 +77,6 @@ public class GameServiceImpl implements GameService {
             gameFromDb.setTitle(gameDto.getTitle());
         }
 
-        return gameRepository.save(gameFromDb)  ;
+        return gameRepository.save(gameFromDb);
     }
 }
