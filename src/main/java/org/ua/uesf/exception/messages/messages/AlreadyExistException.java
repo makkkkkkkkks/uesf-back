@@ -1,4 +1,4 @@
-package org.ua.uesf.exception;
+package org.ua.uesf.exception.messages.messages;
 
 public class AlreadyExistException extends RuntimeException {
 

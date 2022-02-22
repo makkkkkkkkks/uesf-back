@@ -2,7 +2,7 @@ package org.ua.uesf.service.parthner.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.ua.uesf.exception.NotFoundException;
+import org.ua.uesf.exception.messages.messages.NotFoundException;
 import org.ua.uesf.model.Partner;
 import org.ua.uesf.resository.PartnerRepository;
 import org.ua.uesf.service.parthner.PartnerService;
@@ -22,10 +22,8 @@ public class PartnerServiceImpl implements PartnerService {
 
     @Override
     public Partner findById(Long id) {
-
         if (!partnerRepository.findById(id).isPresent())
             throw new NotFoundException("Can't find partner with id: " + id);
-
         return partnerRepository.findById(id).get();
     }
 
@@ -38,7 +36,6 @@ public class PartnerServiceImpl implements PartnerService {
     public void deletePartnerById(Long id) {
         if (!partnerRepository.findById(id).isPresent())
             throw new NotFoundException("Can't find partner with id: " + id);
-
         partnerRepository.deleteById(id);
     }
 

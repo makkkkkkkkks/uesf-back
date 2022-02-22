@@ -1,10 +1,9 @@
 create table news
 (
     id                  int8 not null,
-    contenten           varchar(255),
-    contentua           varchar(255),
+    contenten           TEXT,
+    contentua           TEXT,
     creation_date       timestamp,
-    game                varchar(255),
     imgen               varchar(255),
     imgua               varchar(255),
     news_status         varchar(255),
@@ -16,11 +15,12 @@ create table news
     primary key (id)
 );
 
+
 create table partner
 (
-    id    int8 not null,
-    image varchar(255),
-    link  varchar(255),
+    id           int8 not null,
+    image        varchar(255),
+    link         varchar(255),
     order_number varchar(255),
     primary key (id)
 );

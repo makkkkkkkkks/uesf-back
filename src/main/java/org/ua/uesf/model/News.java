@@ -20,8 +20,12 @@ public class News {
 
     private String titleUA;
     private String titleEN;
+
+    @Column(columnDefinition = "TEXT")
     private String contentUA;
+    @Column(columnDefinition = "TEXT")
     private String contentEN;
+  
     private String shortDescriptionUA;
     private String shortDescriptionEN;
     private String imgUA;
