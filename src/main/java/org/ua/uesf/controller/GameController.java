@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.ua.uesf.exception.messages.messages.NotFoundException;
-import org.ua.uesf.exception.NotFoundException;
 import org.ua.uesf.model.GameDto;
 import org.ua.uesf.service.game.GameService;
 
@@ -47,7 +45,7 @@ public class GameController {
     public void updateNews(@RequestBody GameDto gameDto,
                            @PathVariable("id") Long id) {
         if (!Objects.equals(gameDto.getId(), id))
-            throw new NotFoundException("The id's do not match " + gameDto.getId() + " " + id);
+            throw new RuntimeException("The id's do not match " + gameDto.getId() + " " + id);
 
         gameService.updateGame(id, gameDto);
     }

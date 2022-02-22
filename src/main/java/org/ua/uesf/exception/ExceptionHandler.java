@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.ua.uesf.exception.messages.messages.AlreadyExistException;
-import org.ua.uesf.exception.messages.messages.ExceptionResponse;
-import org.ua.uesf.exception.messages.messages.NotFoundException;
+import org.ua.uesf.exception.messages.AlreadyExistException;
+import org.ua.uesf.exception.messages.ExceptionResponse;
+import org.ua.uesf.exception.messages.NotFoundException;
 
 
 import javax.servlet.http.HttpServletRequest;

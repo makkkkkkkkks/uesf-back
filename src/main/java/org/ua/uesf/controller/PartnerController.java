@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.ua.uesf.exception.messages.messages.NotFoundException;
+import org.ua.uesf.exception.messages.NotFoundException;
 import org.ua.uesf.model.Partner;
 import org.ua.uesf.service.parthner.PartnerService;
 

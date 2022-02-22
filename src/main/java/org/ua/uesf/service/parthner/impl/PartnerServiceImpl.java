@@ -2,7 +2,7 @@ package org.ua.uesf.service.parthner.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.ua.uesf.exception.messages.messages.NotFoundException;
+import org.ua.uesf.exception.messages.NotFoundException;
 import org.ua.uesf.model.Partner;
 import org.ua.uesf.resository.PartnerRepository;
 import org.ua.uesf.service.parthner.PartnerService;
