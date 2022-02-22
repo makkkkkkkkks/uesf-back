@@ -1,4 +1,4 @@
-package org.ua.uesf.exception.messages.messages;
+package org.ua.uesf.exception.messages;
 
 import lombok.Builder;
 import lombok.Data;
