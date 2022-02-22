@@ -24,11 +24,12 @@ public class NewsController {
                                                         @RequestParam(defaultValue = "0") int page,
                                                         @RequestParam(defaultValue = "10") int size,
                                                         @RequestParam(required = false) Long gameId) {
-        List<GeneralNewsDTO> newsPage;
+        List<GeneralNewsDTO> newsPage = null;
         if (gameId != null) {
-            newsService.findNewsByGameId(locale, page, size, gameId);
+            newsPage = newsService.findNewsByGameId(locale, page, size, gameId);
+        } else if (gameId == null) {
+            newsPage = newsService.findNews(locale, page, size);
         }
-        newsPage = newsService.findNews(locale, page, size);
         return new ResponseEntity<>(newsPage, HttpStatus.OK);
     }
 
